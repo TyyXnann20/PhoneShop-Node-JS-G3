@@ -84,6 +84,26 @@ app.post("/insertProduct", upload.single("upload_image") , (req, res) => {
         }
     })
 })
+app.post("/updateProduct/:code" , (req, res) => {
+    var { category_id, name, quantity, price, description } = req.body;
+    var code = req.params.code;
+    var sqlInsert = " UPDATE product SET category_id = ?, name = ?, quantity = ?, " + 
+    "price =?, description = ? WHERE product_id=?"
+        
+    var values = [category_id, name, quantity, price, description, code]
+    db.query(sqlInsert, values, (err, result) => {
+        if (err) {
+            res.json({
+                err: true,
+                message: err
+            })
+        } else {
+            res.json({
+                message: "Product update successfully....................!"
+            })
+        }
+    })
+})
 
 app.listen(PORT, () => {
     console.log(`Server: http://localhost:${PORT}`)
