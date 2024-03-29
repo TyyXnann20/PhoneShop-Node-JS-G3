@@ -20,6 +20,7 @@ function App() {
           <Route path="/insert" element={<InserProduct />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
         </Routes>
     
     </BrowserRouter>

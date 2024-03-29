@@ -1,108 +1,68 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import "./RegisterStyles.css";
 
+const Signup = () => {
+  const [gender, genderchange] = useState("female");
+  const handleSubmit = (e) => {};
 
-const Register = () => {
+  return (
+    <div className="signup_container">
+      <div className="signup_form_container">
+        <div className="left">
+          <h1>Welcome Back</h1>
+          <Link to="/login">
+            <button type="button" className="white_btn">
+              Sing in
+            </button>
+          </Link>
+        </div>
+        <div className="right">
+          <form className="form_container" onSubmit={null}>
+            <h1>Create Account</h1>
+            <input
+              className="input"
+              type="text"
+              placeholder="First Name"
+              name="firstName"
+            />
 
-    const [id, idchange] = useState("");
-    const [name, namechange] = useState("");
-    const [password, passwordchange] = useState("");
-    const [email, emailchange] = useState("");
-    const [phone, phonechange] = useState("");
-    const [country, countrychange] = useState("india");
-    const [address, addresschange] = useState("");
-    const [gender, genderchange] = useState("female");
-
-    const navigate = useNavigate();
-
-
-
-    const handlesubmit = (e) => {
-        e.preventDefault();
-        navigate('/login');
-
-        
-
-    }
-    return (
-        <div>
-            <div className="offset-lg-3 col-lg-6">
-                <form className="container" onSubmit={handlesubmit}>
-                    <div className="card">
-                        <div className="card-header">
-                            <h1>User Registeration</h1>
-                        </div>
-                        <div className="card-body">
-
-                            <div className="row">
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>First Name <span className="errmsg">*</span></label>
-                                        <input className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Last Name <span className="errmsg">*</span></label>
-                                        <input type="password" className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Email <span className="errmsg">*</span></label>
-                                        <input className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label> Password <span className="errmsg">*</span></label>
-                                        <input className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Phone <span className="errmsg"></span></label>
-                                        <input className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Date of Birth <span className="errmsg"></span></label>
-                                        <input className="form-control"></input>
-                                    </div>
-                                </div>
-                               
-                                <div className="col-lg-12">
-                                    <div className="form-group">
-                                        <label>Upload Your photo</label>
-                                        <input type="file" className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Gender</label>
-                                        <br></br>
-                                        <input type="radio" checked={gender === 'male'} onChange={e => genderchange(e.target.value)} name="gender" value="male" className="app-check"></input>
-                                        <label>Male</label>
-                                        <input type="radio" checked={gender === 'female'} onChange={e => genderchange(e.target.value)} name="gender" value="female" className="app-check"></input>
-                                        <label>Female</label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div className="card-footer">
-                            <button type="submit" className="btn btn-primary">Register</button> |
-                            <Link to={'/login'} className="btn btn-danger">Close</Link>
-                        </div>
-                    </div>
-                </form>
+            <input
+              className="input"
+              type="email"
+              placeholder="Email"
+              name="email"
+            />
+            <input
+              className="input"
+              type="password"
+              placeholder="Password"
+              name="password"
+            />
+            <div className="col-lg-6 input">
+              <div className="form-group">
+                <label>
+                  Date of Birth <span className="errmsg"></span>
+                </label>
+                <input
+                  className="form-control"
+                  type="date"
+                //   onChange={(e) => {
+                //     setDob(e.target.value);
+                //   }}
+                ></input>
+              </div>
             </div>
 
-
+            <button type="submit" className="green_btn">
+              Sing Up
+            </button>
+          </form>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
-export default Register;
+export default Signup;
