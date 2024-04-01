@@ -64,7 +64,7 @@ const login = (req, res) => {
           res.json({
             message: "Login successfully.........................!",
             is_login: true,
-            data: userInfo,
+            userData: userInfo,
           });
         } else {
           res.json(" Inncorrect password, please try again.................!");
